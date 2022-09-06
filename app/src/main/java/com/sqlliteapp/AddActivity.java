@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -25,6 +29,9 @@ public class AddActivity extends AppCompatActivity {
         edtln = findViewById(R.id.edt_ln);
 
         DataBaseHandler db = new DataBaseHandler(this);
+
+
+
         btn_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +46,12 @@ public class AddActivity extends AppCompatActivity {
                 db.insertRecord(contact);
                 edtfn.setText("");
                 edtln.setText("");
+                Intent i = new Intent(AddActivity.this,DispayActivity.class);
+
+                startActivity(i);
+                finish();
             }
+
         });
         btn_Dis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +59,9 @@ public class AddActivity extends AppCompatActivity {
                 Intent i = new Intent(AddActivity.this,DispayActivity.class);
 
                 startActivity(i);
+                finish();
             }
         });
+
     }
 }
